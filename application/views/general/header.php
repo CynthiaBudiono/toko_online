@@ -17,7 +17,10 @@
     
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="<?= base_url() ?>assets/images/favicon.png" />
-    
+
+    <!-- FontAwesome V4.7.0 -->
+    <!-- <link rel="stylesheet" href="<?= base_url() ?>assets/vendors/font-awesome/font-awesome.min.css"> -->
+
     <!-- Themefisher Icon font -->
     <link rel="stylesheet" href="<?= base_url() ?>assets/vendors/themefisher-font/style.css">
     <!-- bootstrap.min css -->

@@ -6,9 +6,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="<?= base_url() ?>assets/images/icon.ico" type="image/ico" />
+	<link rel="icon" href="<?= base_url() ?>../assets/images/favicon.png" type="image/ico" />
 
-    <title>SAOCP Informatika | UK Petra</title>
+    <title>My Store | Clothing</title>
 
     <!-- Bootstrap v4.3.1-->
     <link href="<?= base_url() ?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">

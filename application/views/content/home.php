@@ -44,29 +44,34 @@
 	<div class="container">
 		<div class="row">
 			<div class="title text-center">
-				<h2>Products</h2>
+				<h2>Produk Terlaris</h2>
 			</div>
 		</div>
 		<div class="row">
-			
-			<div class="col-md-4">
-				<div class="product-item">
-					<div class="product-thumb">
-						<img class="img-responsive" src="<?= base_url() ?>assets/images/shop/products/product-1.jpg" alt="product-img" />
-						<div class="preview-meta">
-							<ul>
-								<li class="bg-red">
-									<a href="#!"><i class="tf-ion-android-cart"></i></a>
-								</li>
-							</ul>
-                      	</div>
-					</div>
-					<div class="product-content">
-						<h4><a href="product-single.html">Reef Boardsport</a></h4>
-						<p class="price">Rp 100000</p>
-					</div>
-				</div>
-			</div>
+        <?php if(isset($produk_terlaris)) : ?>
+            <?php if(is_array($produk_terlaris)) : ?>
+                <?php foreach($produk_terlaris as $key) : ?>
+                <div class="col-md-4">
+                    <div class="product-item">
+                        <div class="product-thumb">
+                            <img class="img-responsive" src="<?= base_url() ?>assets/images/shop/products/product-1.jpg" alt="product-img" />
+                            <div class="preview-meta">
+                                <ul>
+                                    <li class="bg-red">
+                                        <a href="#!"><i class="tf-ion-android-cart"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="product-content">
+                            <h4><a href="<?= base_url("produk/detils/") ?><?= (isset($key['id'])) ? base64_encode($key['id']) : '' ?>"><?= (isset($key['nama'])) ? $key['nama'] : '' ?></a></h4>
+                            <p class="price"><?= (isset($key['harga'])) ? $key['harga'] : '' ?></p>
+                        </div>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        <?php endif; ?>
 		</div>
 	</div>
 </section>

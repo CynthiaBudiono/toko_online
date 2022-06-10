@@ -1,8 +1,13 @@
 <style>
+    /* html, body {
+        height: 100%;
+    } */
     .btn-solid-border:hover{
         background-color: #d60c3b;
         border-color: #d60c3b;
     }
+
+
 </style>
 <body id="body">
 <!-- Start Top Header Bar -->
@@ -36,6 +41,7 @@
 			</div>
 			<div class="col-md-4 col-xs-12 col-sm-4">
 				<ul class="top-menu text-right list-inline">
+                    <?php if(!$this->session->userdata('logged_in')) {?>
 					<li class="dropdown cart-nav dropdown-slide">
 						<a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><i
 								class="fa fa-cart"></i>Login</a>
@@ -50,7 +56,6 @@
                                     <div class="col-md-12 col-sm-12 m-0 p-0">
                                         <input type="password" class="form-control has-feedback-left" name="password" id="password" placeholder="Password" required="required">
                                     </div>
-                                    
                                 </div>
 							</div>
 							<ul class="text-center cart-buttons">
@@ -59,6 +64,12 @@
                             </form>
 						</div>
 					</li>
+                    <?php } else { ?>
+                        <li>Selamat datang, <b><?= $this->session->userdata('username')?></b></li>
+                        <li>
+                            <a href="<?= base_url('auth/logout') ?>" data-toggle="tooltip" data-placement="bottom" title="Logout"><i class="tf-ion-log-out" aria-hidden="true"></i></a>
+                        </li>
+                    <?php }?>
 				</ul><!-- / .nav .navbar-nav .navbar-right -->
 			</div>
 		</div>
@@ -87,7 +98,7 @@
 				<ul class="nav navbar-nav">
 
 					<!-- Home -->
-					<li class="dropdown ">
+					<li class="dropdown">
 						<a href="<?= base_url('home') ?>">Home</a>
 					</li><!-- / Home -->
 
