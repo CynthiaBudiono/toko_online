@@ -18,7 +18,7 @@
                     <div class="clearfix"></div>
                 </div>
                 <div>
-                    <a class="btn btn-sm bg-green" href="<?php echo base_url("produk/adds"); ?>">Tambah</a>
+                    <a class="btn btn-sm bg-red" href="<?php echo base_url("produk/adds"); ?>">Tambah</a>
                 </div>
                 <div class="x_content">
                     <div class="row">
@@ -54,7 +54,7 @@
                                             <td><?= (isset($key['stok'])) ? $key['stok'] : '' ?></td>
                                             <td>
                                                 <?php 
-                                                    if(isset($key['status'])) if($key['status']==1) echo '<span class="badge bg-green">active</span>'; else echo '<span class="badge bg-danger">non active</span>';?>
+                                                    if(isset($key['status'])) if($key['status']==1) echo '<span class="badge bg-red">active</span>'; else echo '<span class="badge bg-danger">non active</span>';?>
                                             </td>
                                             <td><?= (isset($key['keterangan'])) ? $key['keterangan'] : '' ?></td>
                                         </tr>

@@ -4,6 +4,7 @@ class Produk_model extends CI_Model {
 
     public function getallopen() {
 		$this->db->select('produk.*');
+		$this->db->where('status', 1);
 		$query = $this->db->get('produk');
 
 		if ($query->num_rows() > 0)
@@ -32,6 +33,7 @@ class Produk_model extends CI_Model {
 
 	public function getorderbyjumlah($jumlah_data){
 		$this->db->where('stok > 0');
+		$this->db->where('status', 1);
 		$query = $this->db->order_by('stok', 'ASC')->get('produk', $jumlah_data);
 
 		if ($query->num_rows() > 0)

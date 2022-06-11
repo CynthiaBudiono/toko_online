@@ -15,7 +15,7 @@
     color: #868e96;
   }
   .nav.side-menu>li>a:hover{
-    color: #1d81be !important;
+    color: #f69420 !important;
   }
   /* nav.side-menu>li.current-page, .nav.side-menu>li.active {
     box-shadow: 0 4px 8px #acb5f6;;
@@ -36,21 +36,21 @@
     color: #868e96;
   }
   .nav>li>a:hover, .nav>li>a:focus {
-    color: #1d81be;
+    color: #f69420;
     background: #F4F9F9;
   }
   .nav li li.current-page a{
-    color: #1d81be;
+    color: #f69420;
   }
 
   .nav.side-menu>li.current-page, .nav.side-menu>li.active, .current-page.fa, .nav-sm .nav.side-menu li.active-sm {
-    border-right: 5px solid #1d81be;
+    border-right: 5px solid #f69420;
     border-radius: 5px;
-    color: #1d81be !important;
+    color: #f69420 !important;
   }
 
   .green{
-    color : #1d81be !important;
+    color : #f69420 !important;
   }
 
   .blue{
@@ -62,18 +62,18 @@
   }
 
   .text-green{
-    color : #1d81be !important;
+    color : #f69420 !important;
   }
 
   .border-green{
-    color : #1d81be !important;
+    color : #f69420 !important;
   }
 
-  .bg-green{
-    background: #1d81be !important;  
+  .bg-red{
+    background: #f69420 !important;  
     /* greenColor */
     /* background: #60d5e2 !important; */ /* blueColor */
-    border: 1px solid #1d81be !important;
+    border: 1px solid #f69420 !important;
     color: #fff;
   }
 
@@ -102,20 +102,6 @@
     z-index: 1;
     border-radius: 50%;
   }
-  /* .nav-md ul.nav.child_menu li.current-page {
-    background: #1d81be;
-    bottom: auto;
-    content: "";
-    height: 8px;
-    left: 23px;
-    margin-top: 15px;
-    position: absolute;
-    right: auto;
-    width: 8px;
-    z-index: 1;
-    border-radius: 50%;
-  } */
-
 
 html{
   scroll-behavior: smooth;
@@ -136,15 +122,15 @@ html{
   .daterangepicker td.active, .daterangepicker td.active:hover,
   .daterangepicker .ranges li.active, .daterangepicker .ranges li:hover ,
   .daterangepicker td.active, .daterangepicker td.active:hover {
-    background-color: #1d81be;
+    background-color: #f69420;
     border : 1px solid #F4F9F9;
   }
 
   input[type=file]::file-selector-button {
-    border: 2px solid #1d81be;
+    border: 2px solid #f69420;
     padding: .2em .4em;
     border-radius: .2em;
-    background-color: #1d81be;
+    background-color: #f69420;
     transition: 1s;
     color: #fff;
     }
@@ -200,7 +186,7 @@ html{
   }
   .toggle-switch:checked {
     border-color: #F4F9F9;
-    background: #1d81be;
+    background: #f69420;
   }
   .toggle-switch:checked:after {
     transform: translatex(10px);
