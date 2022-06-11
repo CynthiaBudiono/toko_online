@@ -31,9 +31,9 @@ class Order_model extends CI_Model {
 	}
 
 	public function getwithjoin($id){
-		$this->db->select('order.*, user.nama as nama_user');
+		$this->db->select('order.*, user.nama as nama_user, user.email, user.no_hp');
 		$this->db->join('user', 'user.id = order.id_customer');
-		$query = $this->db->where('id', $id)->get('order', 1, 0);
+		$query = $this->db->where('order.id', $id)->get('order', 1, 0);
 
 		if ($query->num_rows() > 0)
 

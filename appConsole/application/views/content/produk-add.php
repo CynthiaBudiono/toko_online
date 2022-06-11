@@ -77,7 +77,7 @@
                         <div class="ln_solid"></div>
                         <div class="form-group">
                             <div class="col-md-9 col-sm-9">
-                                <a class="btn btn-danger" href="<?php echo base_url("user"); ?>">Cancel</a>
+                                <a class="btn btn-danger" href="<?php echo base_url("produk"); ?>">Cancel</a>
                                 <button type="submit" class="btn btn-success">Submit</button>
                             </div>
                         </div>

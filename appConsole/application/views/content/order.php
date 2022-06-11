@@ -41,7 +41,7 @@
                                                 <a href="<?php echo base_url("order/updates/"); echo base64_encode($key['id']);?>" class="btn btn-info btn-sm btn-action"><i class="fa fa-pencil"></i> Edit </a>
                                             </td>
                                             <td><?= (isset($key['id'])) ? $key['id'] : '' ?></td>
-                                            <td><?= (isset($key['nama_user'])) ? $key['nama_user'] : '' ?></td>
+                                            <td><?= (isset($key['nama_pemesanan'])) ? $key['nama_pemesanan'] : '' ?></td>
                                             <td>Rp. <?= (isset($key['jumlah_pembayaran'])) ? $key['jumlah_pembayaran'] : '' ?></td>
                                             <td><img width="80" src="<?= base_url() ?>../assets/images/bukti_pembayaran/<?= (isset($key['bukti_pembayaran'])) ? $key['bukti_pembayaran'] : '' ?>" alt="" /></td>
                                         </tr>
