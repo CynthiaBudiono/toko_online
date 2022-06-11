@@ -1,15 +1,29 @@
 <style>
-    /* html, body {
-        height: 100%;
-    } */
+    .bg-red{
+		background-color: #d60c3b !important;
+        border-color: #d60c3b !important;
+	}
+	.bg-red>a:hover, .bg-red>a:focus{
+        background-color: #d60c3b !important;
+        border-color: #d60c3b !important;
+    }
     .btn-solid-border:hover{
         background-color: #d60c3b;
         border-color: #d60c3b;
     }
 
+	.alert-fixed {
+		position:fixed; 
+		top: 80px; 
+		right: 10px; 
+		width: 20%;
+		z-index:9999; 
+		border-radius:0px
+	}
 
 </style>
 <body id="body">
+<div class="alert alert-success alert-common alert-fixed" style="display: none;" role="alert" id="success-alert"><i class="tf-ion-thumbsup"></i><span>Well done!</span> Sukses masuk cart</div>
 <!-- Start Top Header Bar -->
 <section class="top-header">
 	<div class="container" style="padding-bottom: 0px;">

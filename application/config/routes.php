@@ -52,3 +52,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'home';
 $route['404_override'] = 'page_not_found';
 $route['translate_uri_dashes'] = FALSE;
+
+// $route['order/orderactive'] = 'order/$1';

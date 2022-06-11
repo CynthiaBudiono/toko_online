@@ -10,6 +10,9 @@ class Home extends CI_Controller {
 	{
 
 		$this->load->model('general_model');
+		$this->load->model('produk_model');
+
+		$data['produk_terlaris'] = $this->produk_model->getorderbyjumlah(3);
 		
 		$data['logo']=$this->general_model->get(1)[0]['nilai'];
 		

@@ -62,3 +62,21 @@
 
   </body>
   </html>
+
+  <script>
+    var baseurl = "<?php echo base_url(); ?>";
+
+	function addquickcart($id){
+		$.post(baseurl + "order/cart", {
+			id: $id,
+			jumlah: 1,
+		},
+		function(result) {
+			
+			$("#success-alert").css('display', 'block')
+			$("#success-alert").fadeTo(1000, 500).slideUp(500, function(){
+				$("#success-alert").slideUp(500);
+			});
+		});
+	}
+</script>

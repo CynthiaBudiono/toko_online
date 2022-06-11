@@ -7,16 +7,20 @@
                 <div class="col-md-4">
                     <div class="product-item">
                         <div class="product-thumb">
-                            <?php if (isset($key['stok'])){ if ($key['stok'] < 0){ ?>
-                                <span class="bage">Out of Stock</span>
+                            <?php if (isset($key['stok'])){ if ($key['stok'] <= 0){ ?>
+                                <span class="bage bg-red">Out of Stock</span>
                             <?php } else{ ?>
                                 <span class="bage"><?= $key['stok'] ?></span>
                             <?php }} ?>
                             <img class="img-responsive" src="<?= base_url() ?>/assets/images/produk/<?= (isset($key['foto'])) ? $key['foto'] : '' ?>" alt="product-img" />
                             <div class="preview-meta">
                                 <ul>
-                                    <li>
-                                        <a href="#!"><i class="tf-ion-android-cart"></i></a>
+                                    <li class="bg-red">
+                                    <?php if (isset($key['stok'])){ if ($key['stok'] <= 0){ ?>
+                                        <a disabled><i class="tf-ion-minus-circled"></i></a>
+                                    <?php } else{ ?>
+                                        <a onclick="addquickcart(<?= (isset($key['id'])) ? $key['id'] : '' ?>)"><i class="tf-ion-android-cart"></i></a>
+                                    <?php }} ?>
                                     </li>
                                 </ul>
                             </div>

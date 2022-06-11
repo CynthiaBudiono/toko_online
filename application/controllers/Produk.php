@@ -48,7 +48,7 @@ class Produk extends CI_Controller {
 
 		$this->load->view('general/navbar', $data);
 
-		$this->load->view('content/produk-detail', $data);
+		$this->load->view('content/produk_detail', $data);
 
 		$this->load->view('general/footer', $data);
 

@@ -1,6 +1,6 @@
 <?php
 
-class Order_model extends CI_Model {
+class Order_detail_model extends CI_Model {
 
     public function getbyidorder($id) {
 		$this->db->select('order_detail.*, produk.nama as nama_produk');

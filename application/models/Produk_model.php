@@ -30,30 +30,24 @@ class Produk_model extends CI_Model {
 
 	}
 
-    public function add($data) {
+	public function getorderbyjumlah($jumlah_data){
+		$this->db->where('stok > 0');
+		$query = $this->db->order_by('stok', 'ASC')->get('produk', $jumlah_data);
 
-        $this->db->trans_start();
+		if ($query->num_rows() > 0)
 
-        $this->db->insert('produk',$data);
+			return $query->result_array();
 
-        $insert_id = $this->db->insert_id();
+		else
 
-        $this->db->trans_complete();
+			return 0;
+	}
 
-        return $insert_id;
-
-    }
-
-    public function update($data) {
+	public function update($data) {
 
 		$array = array('id'=>$data['id']);
 
 		$this->db->where($array)->update('produk', $data);
 
     }
-
-    public function delete($id) {
-
-		$this->db->where('id = '.$id)->delete('produk');
-	}
 }
