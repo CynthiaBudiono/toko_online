@@ -6,7 +6,6 @@
                 <h3><?= isset($title) ? $title : "-" ?></h3>
             </div>
         </div>
-
         <!-- VIEW -->
         <div class="col-md-12 col-sm-12 ">
             <div class="x_panel">
@@ -18,9 +17,9 @@
                     </ul>
                     <div class="clearfix"></div>
                 </div>
-                <!-- <div>
-                    <a class="btn btn-sm bg-green" href="<?php echo base_url("user/adds"); ?>">Tambah</a>
-                </div> -->
+                <div>
+                    <a class="btn btn-sm bg-green" href="<?php echo base_url("produk/adds"); ?>">Tambah</a>
+                </div>
                 <div class="x_content">
                     <div class="row">
                         <div class="col-sm-12">
@@ -34,6 +33,7 @@
                                         <th>Harga</th>
                                         <th>Stok</th>
                                         <th>Status</th>
+                                        <th>Deskripsi Produk</th>
                                     </tr>
                                 </thead>
                                 <tbody id="data_user">
@@ -42,17 +42,21 @@
                                         <?php foreach($produk as $key) : ?>
                                         <tr>
                                             <td>
-                                                <a href="<?php echo base_url("user_group/updates/"); echo base64_encode($key['id']);?>" class="btn btn-info btn-sm btn-action"><i class="fa fa-pencil"></i> Edit </a>
-                                                <a href="#" class="btn btn-danger btn-sm btn-action"><i class="fa fa-trash-o"></i> Delete </a>
+                                                <a href="<?php echo base_url("produk/updates/"); echo base64_encode($key['id']);?>" class="btn btn-info btn-sm btn-action"><i class="fa fa-pencil"></i> Edit </a>
                                             </td>
                                             <td><?= (isset($key['id'])) ? $key['id'] : '' ?></td>
-                                            <td><?= (isset($key['nama'])) ? $key['nama'] : '' ?></td>
+                                            <td>
+                                                <img width="80" src="<?= base_url() ?>../assets/images/produk/<?= (isset($key['foto'])) ? $key['foto'] : '' ?>" alt="" />
+                                                <br>
+                                                <b><?= (isset($key['nama'])) ? $key['nama'] : '' ?></b>
+                                            </td>
+                                            <td><?= (isset($key['harga'])) ? $key['harga'] : '' ?></td>
+                                            <td><?= (isset($key['stok'])) ? $key['stok'] : '' ?></td>
                                             <td>
                                                 <?php 
                                                     if(isset($key['status'])) if($key['status']==1) echo '<span class="badge bg-green">active</span>'; else echo '<span class="badge bg-danger">non active</span>';?>
                                             </td>
-                                            <td><?= (isset($key['created'])) ? $key['created'] : '' ?></td>
-                                            <td><?= (isset($key['updated'])) ? $key['updated'] : '' ?></td>
+                                            <td><?= (isset($key['keterangan'])) ? $key['keterangan'] : '' ?></td>
                                         </tr>
                                         <?php endforeach; ?>
                                     <?php endif; ?>

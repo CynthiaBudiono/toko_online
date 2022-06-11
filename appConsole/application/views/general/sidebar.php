@@ -212,8 +212,8 @@ html{
     <div class="main_container">
       <div class="col-md-3 left_col">
         <div class="left_col scroll-view">
-          <div class="navbar nav_title" style="border: 0;">
-            <a href="<?= base_url() ?>produk"><img src="<?= base_url() ?>/assets/images/<?= isset($logo) ? $logo : "" ?>" alt="..." style="max-width : 100%; max-height 80px;"></a>
+          <div class="navbar nav_title justify-content-center" style="border: 0;">
+            <a href="<?= base_url() ?>produk"><img src="<?= base_url() ?>../assets/images/<?= isset($logo) ? $logo : "" ?>" alt="..." style="max-width : 100%; max-height 80px; width:85px;"></a>
           </div>
 
           <div class="clearfix"></div>
@@ -222,7 +222,7 @@ html{
           <!-- menu profile quick info -->
           <div class="profile clearfix">
             <div class="profile_pic">
-              <img src="<?= base_url() ?>/assets/images/user.png" alt="..." class="img-circle profile_img">
+              <img src="<?= base_url() ?>../assets/images/user.png" alt="..." class="img-circle profile_img">
             </div>
             <div class="profile_info">
               <a data-toggle="tooltip" data-placement="top" title="Logout" href="<?= base_url('auth/logout') ?>" style="float : right">
@@ -241,9 +241,15 @@ html{
             <div class="menu_section">
               <h3>General</h3>
               <ul class="nav side-menu">
-                <li><a href="<?= base_url('produk') ?>"><i class="fa fa-dashboard"></i> Produk</a></li>
-                <li><a href="<?= base_url('user') ?>"><i class="fa fa-dashboard"></i> User</a></li>
-                <li><a href="<?= base_url('order') ?>"><i class="fa fa-dashboard"></i> Order</a></li>
+                <li><a href="<?= base_url('produk') ?>"><i class="fa fa-cubes"></i> Produk</a></li>
+                <li><a href="<?= base_url('user') ?>"><i class="fa fa-user"></i> User</a></li>
+                <li><a href="<?= base_url('general') ?>"><i class="fa fa-cogs"></i> General</a></li>
+              </ul>
+              <br>
+              <h3>Transaksi</h3>
+              <ul class="nav side-menu">
+                <li><a href="<?= base_url('order') ?>"><i class="fa fa-money"></i> Order</a></li>
+              </ul>
             </div>
           </div>
           <!-- /sidebar menu -->

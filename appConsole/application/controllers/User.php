@@ -32,29 +32,52 @@ class User extends CI_Controller {
 		$this->load->view('general/footer', $data);
 	}
 
-    public function updates(){
+    // public function adds(){
 
-        $id = $this->input->post('id');
+    //     $data['title'] = "Add User";
+
+    //     $this->load->model('general_model');
+        
+    //     $data['logo']=$this->general_model->get(1)[0]['nilai'];
+
+    //     $this->load->view('general/header');
+
+    //     $this->load->view('general/sidebar', $data);
+
+    //     $this->load->view('general/navbar', $data);
+
+    //     $this->load->view('content/user-add', $data);
+
+    //     $this->load->view('general/footer', $data);
+
+    // }
+
+    public function updates($id){
+
+        $id = base64_decode($id);
 
         $this->load->model('user_model');
 
 		$res = $this->user_model->get($id);
-
+        
         $data['detil'] = $res;
         
         $data['title'] = "Edit User";
 
-        echo json_encode($data);
+        $this->load->model('general_model');
+        
+        $data['logo']=$this->general_model->get(1)[0]['nilai'];
 
-    }
+        $this->load->view('general/header');
 
-    public function get(){
+        $this->load->view('general/sidebar', $data);
 
-        $this->load->model('user_model');
+        $this->load->view('general/navbar', $data);
 
-		$user = $this->user_model->getallopen();
+        $this->load->view('content/user-add', $data);
 
-        echo json_encode($user);
+        $this->load->view('general/footer', $data);
+
     }
 
     // public function add(){
@@ -68,13 +91,10 @@ class User extends CI_Controller {
     //         'alamat' => $this->input->post('alamat'),
     //     );
 
-    //     // var_dump("masuk add ", $data); exit;
-
     //     $this->load->model('user_model');
-    //     //check validasi
+        
     //     $this->form_validation->set_data($data);
-    //     // $this->form_validation->set_rules('username', 'username', 'trim|required|min_length[4]');
-    //     $this->form_validation->set_rules('level', 'level', 'required');
+    //     $this->form_validation->set_rules('username', 'username', 'required');
 
     //     if ($this->form_validation->run() == FALSE) {
     //         $detil[0] = $data;
@@ -85,14 +105,13 @@ class User extends CI_Controller {
 
     //         $this->user_model->add($data);
 
-    //         echo 'success';
+    //         redirect('user');
     //     }
     // }
 
     public function update(){
         $data = array(
-            'id' => $this->input->post('id'),
-            'username' => $this->input->post('username'),
+            'id' => $this->input->post('iduser'),
             'nama' => $this->input->post('nama'),
             'tipe' => 'customer',
             'email' => $this->input->post('email'),
@@ -100,9 +119,10 @@ class User extends CI_Controller {
             'alamat' => $this->input->post('alamat'),
         );
 
-        //check validasi
+        $this->load->model('user_model');
+        
         $this->form_validation->set_data($data);
-        $this->form_validation->set_rules('id', 'id', 'required');
+        $this->form_validation->set_rules('nama', 'nama', 'required');
 
         if ($this->form_validation->run() == FALSE) {
             $detil[0] = $data;
@@ -111,12 +131,9 @@ class User extends CI_Controller {
         else {
             $this->load->helper(array('form', 'url'));
 
-            $this->load->model('user_model');
-            $old_data = $this->user_model->get($data['id']);
-
             $this->user_model->update($data);
 
-            echo 'success';
-        }    
+            redirect('user');
+        }
     }
 }

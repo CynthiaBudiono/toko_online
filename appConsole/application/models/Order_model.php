@@ -30,6 +30,20 @@ class Order_model extends CI_Model {
 
 	}
 
+	public function getwithjoin($id){
+		$this->db->select('order.*, user.nama as nama_user');
+		$this->db->join('user', 'user.id = order.id_customer');
+		$query = $this->db->where('id', $id)->get('order', 1, 0);
+
+		if ($query->num_rows() > 0)
+
+			return $query->result_array();
+
+		else
+
+			return 0;
+	}
+
     public function add($data) {
 
         $this->db->trans_start();

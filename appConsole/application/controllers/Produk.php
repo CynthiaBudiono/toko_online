@@ -32,49 +32,70 @@ class Produk extends CI_Controller {
 		$this->load->view('general/footer', $data);
 	}
 
-    public function updates(){
+    public function adds(){
 
-        $id = $this->input->post('id');
+        $data['title'] = "Add Produk";
+
+        $this->load->model('general_model');
+        
+        $data['logo']=$this->general_model->get(1)[0]['nilai'];
+
+        $this->load->view('general/header');
+
+        $this->load->view('general/sidebar', $data);
+
+        $this->load->view('general/navbar', $data);
+
+        $this->load->view('content/produk-add', $data);
+
+        $this->load->view('general/footer', $data);
+
+    }
+
+    public function updates($id){
+
+        $id = base64_decode($id);
 
         $this->load->model('produk_model');
 
 		$res = $this->produk_model->get($id);
-
+        
         $data['detil'] = $res;
         
         $data['title'] = "Edit produk";
 
-        echo json_encode($data);
+        $this->load->model('general_model');
+        
+        $data['logo']=$this->general_model->get(1)[0]['nilai'];
 
-    }
+        $this->load->view('general/header');
 
-    public function get(){
+        $this->load->view('general/sidebar', $data);
 
-        $this->load->model('produk_model');
+        $this->load->view('general/navbar', $data);
 
-		$produk = $this->produk_model->getallopen();
+        $this->load->view('content/produk-add', $data);
 
-        echo json_encode($produk);
+        $this->load->view('general/footer', $data);
+
     }
 
     public function add(){
 
         $data = array(
-            'username' => $this->input->post('username'),
             'nama' => $this->input->post('nama'),
-            'tipe' => 'customer',
-            'email' => $this->input->post('email'),
-            'no_hp' => $this->input->post('no_hp'),
-            'alamat' => $this->input->post('alamat'),
+            'harga' => $this->input->post('harga'),
+            'stok' => $this->input->post('stok'),
+            'status' => (($this->input->post('status')=='on') ? 1 : 0),
+            'keterangan' => $this->input->post('keterangan'),
+            "created" => date('Y-m-d H:i:s')
         );
 
-        // var_dump("masuk add ", $data); exit;
-
         $this->load->model('produk_model');
-        //check validasi
+        
         $this->form_validation->set_data($data);
-        // $this->form_validation->set_rules('username', 'username', 'trim|required|min_length[4]');
-        $this->form_validation->set_rules('level', 'level', 'required');
+        $this->form_validation->set_rules('nama', 'nama', 'required');
+        $this->form_validation->set_rules('harga', 'harga', 'required');
 
         if ($this->form_validation->run() == FALSE) {
             $detil[0] = $data;
@@ -85,24 +106,55 @@ class Produk extends CI_Controller {
 
             $this->produk_model->add($data);
 
-            echo 'success';
+            $last_produk = $this->produk_model->getlastproduk();
+
+            if((!empty($_FILES)) && !empty($_FILES['foto_produk']['name'])) {
+				$this->load->helper(array('form', 'url'));
+	            $nama_foto = "Produk-".$last_produk[0]['id']."-".date('YmdHis');
+		        $config['upload_path']          = './../assets/images/produk';
+		        $config['allowed_types']        = 'gif|jpg|png|jpeg|bmp';
+		        $config['file_name']            = $nama_foto;
+		        $config['overwrite']            = true;
+
+		       	$this->load->library('upload', $config);
+		        $this->upload->initialize($config);
+
+
+			  	if ( ! $this->upload->do_upload('foto_produk')){
+                    echo $this->upload->display_errors();
+	            }
+                else{
+	                $name_foto_produk = $this->upload->data('file_name');
+	            }
+
+                $data_insert = array(
+                    "id" => $last_produk[0]['id'],
+                    "foto" => $name_foto_produk
+                );
+
+                $this->produk_model->update($data_insert);
+	        }
+
+            redirect('produk');
         }
     }
 
     public function update(){
         $data = array(
-            'id' => $this->input->post('id'),
-            'username' => $this->input->post('username'),
+            'id' => $this->input->post('idproduk'),
             'nama' => $this->input->post('nama'),
-            'tipe' => 'customer',
-            'email' => $this->input->post('email'),
-            'no_hp' => $this->input->post('no_hp'),
-            'alamat' => $this->input->post('alamat'),
+            'harga' => $this->input->post('harga'),
+            'stok' => $this->input->post('stok'),
+            'status' => (($this->input->post('status')=='on') ? 1 : 0),
+            'keterangan' => $this->input->post('keterangan'),
+            "updated" => date('Y-m-d H:i:s')
         );
 
-        //check validasi
+        $this->load->model('produk_model');
+        
         $this->form_validation->set_data($data);
-        $this->form_validation->set_rules('id', 'id', 'required');
+        $this->form_validation->set_rules('nama', 'nama', 'required');
+        $this->form_validation->set_rules('harga', 'harga', 'required');
 
         if ($this->form_validation->run() == FALSE) {
             $detil[0] = $data;
@@ -111,11 +163,39 @@ class Produk extends CI_Controller {
         else {
             $this->load->helper(array('form', 'url'));
 
-            $this->load->model('produk_model');
+            $get = $this->produk_model->get($data['id']);
 
             $this->produk_model->update($data);
 
-            echo 'success';
-        }    
+            if((!empty($_FILES)) && !empty($_FILES['foto_produk']['name'])) {
+				$this->load->helper(array('form', 'url'));
+	            $nama_foto = "Produk-".$get[0]['id']."-".date('YmdHis');
+		        $config['upload_path']          = './../assets/images/produk';
+		        $config['allowed_types']        = 'gif|jpg|png|jpeg|bmp';
+		        $config['file_name']            = $nama_foto;
+		        $config['overwrite']            = true;
+
+		       	$this->load->library('upload', $config);
+		        $this->upload->initialize($config);
+
+
+			  	if ( ! $this->upload->do_upload('foto_produk')){
+                    echo $this->upload->display_errors();
+	            }
+                else{
+	                $name_foto_produk = $this->upload->data('file_name');
+                    unlink('./../assets/images/produk'.$get[0]['foto']);
+	            }
+
+                $data_insert = array(
+                    "id" => $get[0]['id'],
+                    "foto" => $name_foto_produk
+                );
+
+                $this->produk_model->update($data_insert);
+	        }
+
+            redirect('produk');
+        }
     }
 }
