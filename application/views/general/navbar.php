@@ -37,7 +37,7 @@
 			<div class="col-md-4 col-xs-12 col-sm-4">
 				<!-- Site Logo -->
 				<div class="logo text-center">
-					<a href="index.html">
+					<a href="<?= base_url('home') ?>">
 						<!-- replace logo here -->
 						<svg width="250px" height="29px" viewBox="0 0 155 29" version="1.1" xmlns="http://www.w3.org/2000/svg"
 							xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -76,6 +76,7 @@
 								<li><button type="submit" class="btn btn-lg btn-solid-border">Login</button></li>
 							</ul>
                             </form>
+							 <span>Belum punya akun? <a href="<?= base_url('auth/register') ?>">Register sekarang</a></span>
 						</div>
 					</li>
                     <?php } else { ?>
@@ -125,6 +126,13 @@
 					<li class="dropdown ">
 						<a href="<?= base_url('order') ?>">Order</a>
 					</li><!-- / Order -->
+
+					<!-- Profile -->
+					<?php //if($this->session->userdata('logged_in')) {?>
+						<li class="dropdown ">
+							<a href="<?= base_url('profile') ?>">Profile</a>
+						</li><!-- / Profile -->
+					<?php //}?>
 
 				</ul><!-- / .nav .navbar-nav -->
 			</div>

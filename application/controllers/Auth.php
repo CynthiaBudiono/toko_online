@@ -64,6 +64,65 @@ class Auth extends CI_Controller
         $this->load->view('general/footer', $data);
     }
 
+    public function register(){
+        $this->load->model('general_model');
+		
+		$data['logo']=$this->general_model->get(1)[0]['nilai'];
+		
+		$this->load->view('general/header', $data);
+
+        $this->load->view('general/navbar', $data);
+
+		$this->load->view('general/register', $data);
+
+        $this->load->view('general/footer', $data);
+    }
+
+    public function signin(){
+
+        $this->load->model('user_model');
+
+        $get = $this->user_model->getbyusername($this->input->post('username'));
+
+        if(!$get){
+            $data = array(
+                'username' => $this->input->post('username'),
+                'nama' => $this->input->post('nama'),
+                'password' => md5($this->input->post('password')),
+                'tipe' => 'customer',
+                'email' => $this->input->post('email'),
+                'created' => date('Y-m-d H:i:s'),
+            );
+            
+            $this->load->helper(array('form', 'url'));
+
+            $this->user_model->add($data);
+            $this->session->set_flashdata('msg','Berhasil Register');
+            redirect('home');
+        }
+        else{
+            $data['detil'] = array(
+                'username' => $this->input->post('username'),
+                'nama' => $this->input->post('nama'),
+                'password' => $this->input->post('password'),
+                'email' => $this->input->post('email')
+            );
+            $data['error_msg'] =  "Username sudah digunakan";
+
+            $this->load->model('general_model');
+		
+		    $data['logo']=$this->general_model->get(1)[0]['nilai'];
+            
+            $this->load->view('general/header', $data);
+
+            $this->load->view('general/navbar', $data);
+
+            $this->load->view('general/register', $data);
+
+            $this->load->view('general/footer', $data);
+        }
+    }
+
     public function logout(){
 
         $this->session->sess_destroy();

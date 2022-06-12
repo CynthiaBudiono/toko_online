@@ -80,3 +80,30 @@
 		});
 	}
 </script>
+
+<?php if ($this->session->flashdata('msg')) : ?>
+
+<div style="margin-top:100px;" class="modal" tabindex="-1" role="dialog" id="infomsg">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+
+      <div class="modal-header" style="background-color: #d60c3b;">
+        <h4 class="modal-title" id="myModalLabel2" style="color: white; display:inline-block;">Notification</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+      <div class="modal-body">
+        <?= $this->session->flashdata('msg') ?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $('#infomsg').modal('show');
+</script>
+
+<?php endif; ?>

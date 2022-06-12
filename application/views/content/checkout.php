@@ -7,11 +7,11 @@
                   <div class="block billing-details">
                      <h4 class="widget-title">Detail Pembayaran</h4>
                         <div class="form-group">
-                           <label for="full_name">Full Name</label>
+                           <label for="full_name">Nama Lengkap</label>
                            <input type="text" class="form-control" id="full_name" name="full_name" placeholder="" value="<?= (isset($customer[0]['nama'])) ? $customer[0]['nama'] : '-' ?>">
                         </div>
                         <div class="form-group">
-                           <label for="user_address">Address</label>
+                           <label for="user_address">Alamat</label>
                            <input type="text" class="form-control" id="user_address" name="user_address" placeholder="jln." value="<?= (isset($customer[0]['alamat'])) ? $customer[0]['alamat'] : '-' ?>">
                         </div>
                         <div class="form-group">

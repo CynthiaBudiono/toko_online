@@ -80,35 +80,6 @@ class User extends CI_Controller {
 
     }
 
-    // public function add(){
-
-    //     $data = array(
-    //         'username' => $this->input->post('username'),
-    //         'nama' => $this->input->post('nama'),
-    //         'tipe' => 'customer',
-    //         'email' => $this->input->post('email'),
-    //         'no_hp' => $this->input->post('no_hp'),
-    //         'alamat' => $this->input->post('alamat'),
-    //     );
-
-    //     $this->load->model('user_model');
-        
-    //     $this->form_validation->set_data($data);
-    //     $this->form_validation->set_rules('username', 'username', 'required');
-
-    //     if ($this->form_validation->run() == FALSE) {
-    //         $detil[0] = $data;
-    //         echo validation_errors();
-    //     }
-    //     else {
-    //         $this->load->helper(array('form', 'url'));
-
-    //         $this->user_model->add($data);
-
-    //         redirect('user');
-    //     }
-    // }
-
     public function update(){
         $data = array(
             'id' => $this->input->post('iduser'),

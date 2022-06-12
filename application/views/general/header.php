@@ -35,4 +35,7 @@
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/style.css">
 
+    <!-- VUE JS -->
+    <script src="<?= base_url() ?>assets/js/vue.js"></script>
+
     </head>
