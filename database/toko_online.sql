@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 12, 2022 at 05:12 AM
+-- Generation Time: Jun 13, 2022 at 10:08 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -115,7 +115,7 @@ INSERT INTO `produk` (`id`, `nama`, `harga`, `foto`, `stok`, `status`, `keterang
 (1, 'Hoodie IM Possible', 240000, 'Produk-1-20220611105310.jpg', 101, 1, '                                    Sudah menggunakan bahan Fleece, tidak terlalu tebal dan juga tidak terlalu tipis sehingga sangat cocok dan nyaman digunakan di iklim tropis Indonesia                                ', '2022-06-11 01:13:04', '2022-06-11 02:53:10'),
 (2, 'Kaos MerryForTees', 295000, 'Produk-2-20220611104350.jpg', 326, 1, 'Cotton, Denim                                ', '2022-06-11 01:20:00', '2022-06-11 02:43:50'),
 (3, 'PRIMERRY 2 TEES CROWN', 189000, 'Produk-3-20220611134107.jpg', 0, 1, '                               Round Neck                                     ', '2022-06-11 05:41:07', '2022-06-11 06:41:07'),
-(4, 'PRIMERRY 2 TEES STRIPS', 295000, 'Produk-4-20220612002211.jpg', 5, 0, '                                    hitam                                                              ', '2022-06-11 16:22:11', '2022-06-11 16:22:21');
+(4, 'PRIMERRY 2 TEES STRIPS', 295000, 'Produk-4-20220612002211.jpg', 5, 1, '                                    hitam                                                              ', '2022-06-11 16:22:11', '2022-06-11 16:22:21');
 
 -- --------------------------------------------------------
 
@@ -141,7 +141,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `username`, `password`, `nama`, `tipe`, `email`, `no_hp`, `alamat`, `created`) VALUES
 (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'customer', 'xx@gmail.com', '081112', 'jln jln', '2022-06-10 13:10:35'),
-(2, 'cboo', '202cb962ac59075b964b07152d234b70', 'cynthia', 'customer', 'xx@gmail.com', '', '', '2022-06-12 01:46:05');
+(2, 'cboo', '21232f297a57a5a743894a0e4a801fc3', 'cynthia', 'customer', 'xx@gmail.com', '', '', '2022-06-12 01:46:05');
 
 --
 -- Indexes for dumped tables

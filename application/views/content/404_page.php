@@ -1,6 +1,6 @@
 <style>
-  body{
-    background: #1d81be !important;
+  .btn-main{
+    background: #d60c3b !important;
   }
 
   h1,h2,p{
@@ -9,58 +9,69 @@
 </style>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
 
-    <title>Not Found | </title>
+  <!-- Basic Page Needs
+  ================================================== -->
+  <meta charset="utf-8">
+  <title>My Store | Clothing</title>
 
-    <!-- Bootstrap -->
-    <link href="<?= base_url() ?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="<?= base_url() ?>assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="<?= base_url() ?>assets/vendors/nprogress/nprogress.css" rel="stylesheet">
+  <!-- Mobile Specific Metas
+  ================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Construction Html5 Template">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="author" content="Themefisher">
+  <meta name="generator" content="Themefisher Constra HTML Template v1.0">
+  
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="<?= base_url() ?>assets/images/favicon.png" />
+  
+  <!-- Themefisher Icon font -->
+  <link rel="stylesheet" href="<?= base_url() ?>assets/vendors/themefisher-font/style.css">
+  <!-- bootstrap.min css -->
+  <link rel="stylesheet" href="<?= base_url() ?>assets/vendors/bootstrap/css/bootstrap.min.css">
+  
+  <!-- Animate css -->
+  <link rel="stylesheet" href="<?= base_url() ?>assets/vendors/animate/animate.css">
+  <!-- Slick Carousel -->
+  <link rel="stylesheet" href="<?= base_url() ?>assets/vendors/slick/slick.css">
+  <link rel="stylesheet" href="<?= base_url() ?>assets/vendors/slick/slick-theme.css">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="<?= base_url() ?>assets/css/style.css">
 
-    <!-- Custom Theme Style -->
-    <link href="<?= base_url() ?>assets/build/css/custom.min.css" rel="stylesheet">
-  </head>
+</head>
 
-  <body class="nav-md">
-    <div class="container body">
-      <div class="main_container">
-        <!-- page content -->
-        <div class="col-md-12">
-          <div class="col-middle">
-            <div class="text-center text-center">
-              <h1 class="error-number">404</h1>
-              <h2>Sorry but we couldn't find this page</h2>
-              <p>This page you are looking for does not exist 
-                <!-- <a href="#">Report this?</a> -->
-              </p>
-              <div class="mid_center">
-                <a class="btn btn-lg btn-secondary" href="<?php echo base_url("dashboard"); ?>">Go Home !</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- /page content -->
-      </div>
-    </div>
-
-    <!-- jQuery -->
+<body id="body">
+	<section class="page-404">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<a href="<?= base_url() ?>">
+						<h3>STORE</h3>
+					</a>
+					<h1>404</h1>
+					<h2>Page Not Found</h2>
+					<a href="<?= base_url('home') ?>" class="btn btn-main"><i class="tf-ion-android-arrow-back"></i> Go Home</a>
+				</div>
+			</div>
+		</div>
+	</section>
+    
+    <!-- Main jQuery -->
     <script src="<?= base_url() ?>assets/vendors/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap -->
-   <script src="<?= base_url() ?>assets/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- FastClick -->
-    <script src="<?= base_url() ?>assets/vendors/fastclick/lib/fastclick.js"></script>
-    <!-- NProgress -->
-    <script src="<?= base_url() ?>assets/vendors/nprogress/nprogress.js"></script>
+    <!-- Bootstrap 3.1 -->
+    <script src="<?= base_url() ?>assets/vendors/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Bootstrap Touchpin -->
+    <script src="<?= base_url() ?>assets/vendors/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
 
-    <!-- Custom Theme Scripts -->
-    <script src="<?= base_url() ?>assets/build/js/custom.min.js"></script>
+    <!-- slick Carousel -->
+    <script src="<?= base_url() ?>assets/vendors/slick/slick.min.js"></script>
+    <script src="<?= base_url() ?>assets/vendors/slick/slick-animation.min.js"></script>
+
+    <!-- Main Js File -->
+    <script src="assets/js/script.js"></script>
+    
   </body>
-</html>
+  </html>
