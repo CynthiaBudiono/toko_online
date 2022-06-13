@@ -1,4 +1,4 @@
-<div class="page-wrapper">
+<div class="page-wrapper" id="usingvue">
    <div class="checkout shopping">
       <div class="container">
          <div class="row">
@@ -49,7 +49,7 @@
                                     <div class="media-body">
                                        <h4 class="media-heading"><a href="<?= base_url("produk/detils/") ?><?= (isset($key['id'])) ? base64_encode($key['id']) : '' ?>"><?= (isset($key['nama'])) ? $key['nama'] : '' ?></a></h4>
                                        <p class="price"><?= (isset($key['jumlah'])) ? $key['jumlah'] : '' ?> x <?= (isset($key['harga'])) ? $key['harga'] : '' ?></p>
-                                       <span class="remove" onclick="hapus(<?= (isset($key['id'])) ? $key['id'] : '' ?>)">Remove</span>
+                                       <span class="remove" @click="hapus(<?= (isset($key['id'])) ? $key['id'] : '' ?>)">Remove</span>
                                     </div>
                                  </div>
                               <?php endforeach; ?>
@@ -68,15 +68,20 @@
 </div>
 
 <script>
-    var baseurl = "<?php echo base_url(); ?>";
+   var baseurl = "<?php echo base_url(); ?>";
 
-	function hapus($id){
-		$.post(baseurl + "order/cartremove", {
-            id: $id
-        },
-        function(result) {
-            var url = "<?= base_url('order/checkout/') ?>";
-            window.location = url;
-        });
-	}
+   var error = new Vue({
+		el: '#usingvue',
+		methods: {
+			hapus: function($id) {
+				$.post(baseurl + "order/cartremove", {
+                    id: $id
+                },
+                function(result) {
+                    var url = "<?= base_url('order/checkout/') ?>";
+                    window.location = url;
+                });
+			}
+		}
+	})
 </script>

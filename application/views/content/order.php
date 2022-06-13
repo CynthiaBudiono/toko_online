@@ -137,7 +137,7 @@
 </div>
 </div>
 
-<!-- Modal -->
+<!-- Modal PEMBAYARAN-->
 <div class="modal product-modal fade" id="payment-modal">
     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <i class="tf-ion-close"></i>
@@ -149,7 +149,7 @@
                     <div class="row">
                         <input type="hidden" name="idproduk" id="idproduk" value="<?= $idproduk ?>"/>
                         <div class="col-md-8 col-sm-6 col-xs-12">
-                            <img id="preview1" name="preview1" style="min-height:100px;" src="<?= base_url() ?>assets/images/bukti_pembayaran/<?= $bukti_pembayaran?>" title="Preview Logo">
+                            <img id="preview1" name="preview1" style="min-height:100px;" src="<?= base_url() ?>assets/images/bukti_pembayaran/<?php if($bukti_pembayaran != null) echo $bukti_pembayaran; else echo 'bayar.png'; ?>" title="Preview Logo">
                             <input type="file" name="bukti_pembayaran" id="bukti_pembayaran" onchange="tampilkanPreview(this,'preview1')">
                         </div>
                         <div class="col-md-4 col-sm-6 col-xs-12">
