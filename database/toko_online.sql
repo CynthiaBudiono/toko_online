@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jun 13, 2022 at 10:08 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.29
+-- Host: sql309.epizy.com
+-- Generation Time: Jun 13, 2022 at 12:49 PM
+-- Server version: 10.3.27-MariaDB
+-- PHP Version: 7.2.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `toko_online`
+-- Database: `epiz_31923708_toko_online`
 --
 
 -- --------------------------------------------------------
@@ -64,7 +65,8 @@ CREATE TABLE `order` (
 
 INSERT INTO `order` (`id`, `id_customer`, `nama_pemesanan`, `alamat_pengiriman`, `jumlah_pembayaran`, `bukti_pembayaran`, `keterangan`, `created`) VALUES
 (1, 1, 'budii', '                                                                        jln sini2                                                               ', 535000, 'pembayaran-1-20220612001732.png', 'tolong kirim secepatnya', '2022-06-11 17:17:32'),
-(2, 1, 'admin', 'jln jln', 484000, '', '-', '2022-06-11 16:07:33');
+(2, 1, 'admin', 'jln jln', 484000, '', '-', '2022-06-11 16:07:33'),
+(3, 2, 'cynthia', '                                                                        jln haha 122, kodepos 67665                                                                ', 470000, 'pembayaran-3-20220613223731.jpg', 'hoodie spektakulernya warna hitam L', '2022-06-13 15:35:24');
 
 -- --------------------------------------------------------
 
@@ -87,7 +89,9 @@ INSERT INTO `order_detail` (`id`, `id_order`, `id_produk`, `jumlah`) VALUES
 (1, 1, 2, 1),
 (2, 1, 1, 1),
 (3, 2, 3, 1),
-(4, 2, 2, 1);
+(4, 2, 2, 1),
+(5, 3, 5, 1),
+(6, 3, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -112,10 +116,11 @@ CREATE TABLE `produk` (
 --
 
 INSERT INTO `produk` (`id`, `nama`, `harga`, `foto`, `stok`, `status`, `keterangan`, `created`, `updated`) VALUES
-(1, 'Hoodie IM Possible', 240000, 'Produk-1-20220611105310.jpg', 101, 1, '                                    Sudah menggunakan bahan Fleece, tidak terlalu tebal dan juga tidak terlalu tipis sehingga sangat cocok dan nyaman digunakan di iklim tropis Indonesia                                ', '2022-06-11 01:13:04', '2022-06-11 02:53:10'),
+(1, 'Hoodie IM Possible', 240000, 'Produk-1-20220611105310.jpg', 100, 1, '                                    Sudah menggunakan bahan Fleece, tidak terlalu tebal dan juga tidak terlalu tipis sehingga sangat cocok dan nyaman digunakan di iklim tropis Indonesia                                ', '2022-06-11 01:13:04', '2022-06-11 02:53:10'),
 (2, 'Kaos MerryForTees', 295000, 'Produk-2-20220611104350.jpg', 326, 1, 'Cotton, Denim                                ', '2022-06-11 01:20:00', '2022-06-11 02:43:50'),
 (3, 'PRIMERRY 2 TEES CROWN', 189000, 'Produk-3-20220611134107.jpg', 0, 1, '                               Round Neck                                     ', '2022-06-11 05:41:07', '2022-06-11 06:41:07'),
-(4, 'PRIMERRY 2 TEES STRIPS', 295000, 'Produk-4-20220612002211.jpg', 5, 1, '                                    hitam                                                              ', '2022-06-11 16:22:11', '2022-06-11 16:22:21');
+(4, 'PRIMERRY 2 TEES STRIPS', 295000, 'Produk-4-20220612002211.jpg', 5, 1, '                                    hitam                                                              ', '2022-06-11 16:22:11', '2022-06-11 16:22:21'),
+(5, 'Hoodie IM POSSIBLE Spektakuler Merry Riana', 230000, 'Produk-5-20220613220744.jpg', 884, 1, 'Bahan dasar FLEECE yang berkualitas (adem, halus) serta dengan jahitan yang rapi                                       ', '2022-06-14 02:07:44', '2022-06-13 15:05:36');
 
 -- --------------------------------------------------------
 
@@ -141,7 +146,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `username`, `password`, `nama`, `tipe`, `email`, `no_hp`, `alamat`, `created`) VALUES
 (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'customer', 'xx@gmail.com', '081112', 'jln jln', '2022-06-10 13:10:35'),
-(2, 'cboo', '21232f297a57a5a743894a0e4a801fc3', 'cynthia', 'customer', 'xx@gmail.com', '', '', '2022-06-12 01:46:05');
+(2, 'cboo', '21232f297a57a5a743894a0e4a801fc3', 'cynthia', 'customer', 'xx@gmail.com', '', '', '2022-06-12 01:46:05'),
+(3, 'dummy', '202cb962ac59075b964b07152d234b70', 'dummy', 'customer', 'dummy@gmail.com', '', '', '2022-06-14 02:38:29');
 
 --
 -- Indexes for dumped tables
@@ -191,25 +197,25 @@ ALTER TABLE `general`
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
