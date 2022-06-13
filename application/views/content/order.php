@@ -87,7 +87,7 @@
 							<thead>
 								<tr>
 									<th>Order ID</th>
-									<th>Tanggal Mesan</th>
+									<th>Info Pemesanan</th>
 									<th>Barang</th>
 									<th>Total Harga</th>
                                     <th>Bukti Bayar</th>
@@ -104,7 +104,11 @@
                                         $jumlah_pembayaran = (isset($key['jumlah_pembayaran'])) ? $key['jumlah_pembayaran'] : '0';?>
                                     <tr>
                                         <td>#<?= (isset($key['id'])) ? $key['id'] : '' ?></td>
-                                        <td><?= (isset($key['created'])) ? $key['created'] : '' ?></td>
+                                        <td>
+                                            <b>Nama: </b><?= (isset($key['nama_pemesanan'])) ? $key['nama_pemesanan'] : '' ?><br>
+                                            <b>Tanggal: </b><?= (isset($key['created'])) ? $key['created'] : '' ?><br>
+                                            <b>Pengiriman: </b><?= (isset($key['alamat_pengiriman'])) ? $key['alamat_pengiriman'] : '' ?>
+                                        </td>
                                         <td><?= (isset($key['jumlah_produk'])) ? $key['jumlah_produk'] : '' ?></td>
                                         <td>Rp. <?= (isset($key['jumlah_pembayaran'])) ? $key['jumlah_pembayaran'] : '' ?></td>
                                         <!-- <td><span class="label label-primary">Processing</span></td> -->

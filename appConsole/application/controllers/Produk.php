@@ -88,7 +88,7 @@ class Produk extends CI_Controller {
             'harga' => $this->input->post('harga'),
             'stok' => $this->input->post('stok'),
             'status' => (($this->input->post('status')=='on') ? 1 : 0),
-            'keterangan' => $this->input->post('keterangan'),
+            'keterangan' => (($this->input->post('keterangan')!='') ? $this->input->post('keterangan') : "-"),
             "created" => date('Y-m-d H:i:s')
         );
 
@@ -97,6 +97,7 @@ class Produk extends CI_Controller {
         $this->form_validation->set_data($data);
         $this->form_validation->set_rules('nama', 'nama', 'required');
         $this->form_validation->set_rules('harga', 'harga', 'required');
+        $this->form_validation->set_rules('keterangan', 'keterangan', 'trim|required');
 
         if ($this->form_validation->run() == FALSE) {
             $detil[0] = $data;

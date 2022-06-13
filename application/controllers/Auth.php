@@ -11,13 +11,14 @@ class Auth extends CI_Controller
 
         // $this->form_validation->set_rules('selecttipeuser', 'Tipe', 'min_length[3]|required');
 
-        $this->form_validation->set_rules('username', 'Username', 'min_length[4]|required');
+        $this->form_validation->set_rules('username', 'Username', 'min_length[2]|required');
 
-        $this->form_validation->set_rules('password', 'Password', 'required|min_length[4]');
+        $this->form_validation->set_rules('password', 'Password', 'required|min_length[2]');
 
         if ($this->form_validation->run() == false) {
-
-            $data['error_msg'] = validation_errors();            
+            // $data['error_msg'] = validation_errors();   
+            $this->session->set_flashdata('msg',validation_errors());
+            redirect('home');         
         } 
         else {
             if ($this->form_validation->run() !== false) {
@@ -41,12 +42,16 @@ class Auth extends CI_Controller
                         redirect('home');
                     } 
                     else {
-                        $data['error_msg'] = "Invalid username and password!";
+                        // $data['error_msg'] = "Invalid username and password!";
+                        $this->session->set_flashdata('msg','Invalid username and password!');
+                        redirect('home');
                     }
                     
                 }
                 else {
-                    $data['error_msg'] = "User not found";
+                    // $data['error_msg'] = "User not found";
+                    $this->session->set_flashdata('msg','User not found');
+                    redirect('home');
                 }
             }
         }

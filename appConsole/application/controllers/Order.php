@@ -97,7 +97,7 @@ class Order extends CI_Controller {
         
         $this->form_validation->set_data($data);
         $this->form_validation->set_rules('nama_pemesanan', 'Nama Pemesan', 'required');
-        $this->form_validation->set_rules('alamat_pengiriman', 'Alamat Pengiriman', 'required');
+        $this->form_validation->set_rules('alamat_pengiriman', 'Alamat Pengiriman', 'trim|required');
 
         if ($this->form_validation->run() == FALSE) {
             $detil[0] = $data;
