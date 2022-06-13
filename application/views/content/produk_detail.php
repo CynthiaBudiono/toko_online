@@ -21,7 +21,7 @@
 				</div>
 			</div>
 			<div class="col-md-7">
-				<div class="single-product-details">
+				<div class="single-product-details" id="usingvue">
 					<span id="idproduk" style="display: none;"><?= isset($detil[0]['id']) ? $detil[0]['id'] : '' ?></span>
 					<h2> <?= isset($detil[0]['nama']) ? $detil[0]['nama'] : '' ?></h2>
 					<p class="product-price" style="font-size: 25px;"> Rp. <?= isset($detil[0]['harga']) ? $detil[0]['harga'] : '' ?></p>
@@ -33,13 +33,13 @@
                     </p>
 					<div class="product-quantity">
 						<span>Quantity:</span>
-						<div class="product-quantity-slider" id="stokvue">
-						<!-- onchange="cekstok()" -->
-							<input id="product-quantity" type="text" value="1" name="product-quantity" @change="onChange($event)">
+						<div class="product-quantity-slider">
+							<input id="product-quantity" type="number" value="1"  min="1" max="<?= isset($detil[0]['stok']) ? $detil[0]['stok'] : '0' ?>" @click="cekstok">
 							<span id="error" style="color: red;"> {{ error_msg }}</span>
 						</div>
 					</div>
-					<button class="btn btn-main mt-20" onclick="addcart()">Add To Cart</button>
+					<button class="btn btn-main mt-20" @click="addcart">Add To Cart</button>
+					<!-- onclick="addcart()" -->
 				</div>
 			</div>
 		</div>
@@ -50,46 +50,34 @@
     var baseurl = "<?php echo base_url(); ?>";
 
 	var error = new Vue({
-		el: '#stokvue',
+		el: '#usingvue',
 		data: {
 			error_msg: ''
 		},
 		methods: {
-			onChange(event) {
-				alert("MASAUK");
+			cekstok: function() {
 				if(parseInt($("#product-quantity").val()) > parseInt($("#stok").html())){
 					this.error_msg = "Stok Terbatas!";
 				}
+				else{
+					this.error_msg = "";
+				}
+			},
+			addcart: function(){
+				if(this.error_msg == ""){
+					$.post(baseurl + "order/cart", {
+						id: $("#idproduk").html(),
+						jumlah: $("#product-quantity").val(),
+					},
+					function(result) {
+						var url = "<?= base_url('order/') ?>";
+						window.location = url;
+					});
+				}
+				else{
+					alert("Jumlah pembelian melebihi stok");
+				}
 			}
-			// cekstok: function () {
-			// 	if(parseInt($("#product-quantity").val()) > parseInt($("#stok").html())){
-			// 		this.error_msg = "Stok Terbatas!";
-			// 	}
-			// }
 		}
 	})
-	// function cekstok(){
-	// 	if(parseInt($("#product-quantity").val()) > parseInt($("#stok").html())){
-	// 		$("#error").html("Stok Terbatas!");
-	// 	}
-	// 	else{
-	// 		$("#error").html("");
-	// 	}
-	// }
-
-	function addcart(){
-		if($("#error").html() == ""){
-			$.post(baseurl + "order/cart", {
-				id: $("#idproduk").html(),
-				jumlah: $("#product-quantity").val(),
-			},
-			function(result) {
-				var url = "<?= base_url('order/') ?>";
-        		window.location = url;
-			});
-		}
-		else{
-			alert("Jumlah pembelian melebihi stok");
-		}
-	}
 </script>

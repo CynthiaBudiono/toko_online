@@ -5,7 +5,7 @@
 </style>
 
 <div class="container">
-<div class="row">
+<div class="row" id="usingvue">
     <div class="col-xs-12">
         <div class="tabCommon mt-20">
             <ul class="nav nav-tabs">
@@ -53,7 +53,8 @@
                                                         <td class=""><?= (isset($key['jumlah'])) ? $key['jumlah'] : '' ?> x <?= (isset($key['harga'])) ? $key['harga'] : '' ?></td>
                                                         <td class="">
                                                             <!-- <button class="btn btn-main mt-20" onclick="addcart()">Add To Cart</button> -->
-                                                            <a class="product-remove" href="" onclick="hapus(<?= (isset($key['id'])) ? $key['id'] : '' ?>)">Remove</a>
+                                                            <a class="product-remove" href="" @click="hapus(<?= (isset($key['id'])) ? $key['id'] : '' ?>)">Remove</a>
+                                                            <!-- onclick="hapus(<?= (isset($key['id'])) ? $key['id'] : '' ?>)" -->
                                                         </td>
                                                         </tr>
                                                     <?php endforeach; ?>
@@ -144,7 +145,7 @@
                     <div class="row">
                         <input type="hidden" name="idproduk" id="idproduk" value="<?= $idproduk ?>"/>
                         <div class="col-md-8 col-sm-6 col-xs-12">
-                            <img id="preview1" name="preview1" style="min-height:100px;" src="<?= base_url() ?>../assets/images/bukti_pembayaran/<?= $bukti_pembayaran?>" title="Preview Logo">
+                            <img id="preview1" name="preview1" style="min-height:100px;" src="<?= base_url() ?>assets/images/bukti_pembayaran/<?= $bukti_pembayaran?>" title="Preview Logo">
                             <input type="file" name="bukti_pembayaran" id="bukti_pembayaran" onchange="tampilkanPreview(this,'preview1')">
                         </div>
                         <div class="col-md-4 col-sm-6 col-xs-12">
@@ -167,15 +168,30 @@
 <script>
     var baseurl = "<?php echo base_url(); ?>";
 
-	function hapus($id){
-		$.post(baseurl + "order/cartremove", {
-            id: $id
-        },
-        function(result) {
-            var url = "<?= base_url('order/') ?>";
-            window.location = url;
-        });
-	}
+    var error = new Vue({
+		el: '#usingvue',
+		methods: {
+			hapus: function($id) {
+				$.post(baseurl + "order/cartremove", {
+                    id: $id
+                },
+                function(result) {
+                    var url = "<?= base_url('order/') ?>";
+                    window.location = url;
+                });
+			}
+		}
+	})
+
+	// function hapus($id){
+	// 	$.post(baseurl + "order/cartremove", {
+    //         id: $id
+    //     },
+    //     function(result) {
+    //         var url = "<?= base_url('order/') ?>";
+    //         window.location = url;
+    //     });
+	// }
 
     function tampilkanPreview(userfile, idpreview){
 

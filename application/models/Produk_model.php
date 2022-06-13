@@ -5,6 +5,7 @@ class Produk_model extends CI_Model {
     public function getallopen() {
 		$this->db->select('produk.*');
 		$this->db->where('status', 1);
+		$this->db->order_by('stok', 'DESC');
 		$query = $this->db->get('produk');
 
 		if ($query->num_rows() > 0)
