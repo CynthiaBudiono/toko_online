@@ -10,8 +10,28 @@
       </div>
     </div>
   </div>
-  <div class="slider-item th-fullpage hero-area" style="background-image: url(<?= base_url() ?>assets/images/slider/slider-2.jpg);"></div>
-  <div class="slider-item th-fullpage hero-area" style="background-image: url(<?= base_url() ?>assets/images/slider/slider-3.jpg);"></div>
+  <div class="slider-item th-fullpage hero-area" style="background-image: url(<?= base_url() ?>assets/images/slider/slider-2.jpg);">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 text-right">
+          <p data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".1">Clothing</p>
+          <h1 data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".5">Wujudkan Mimpimu <br> Bersama MerryRianaShop</h1>
+          <a data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".8" class="btn" href="<?= base_url("produk") ?>">Shop Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slider-item th-fullpage hero-area" style="background-image: url(<?= base_url() ?>assets/images/slider/slider-3.jpg);">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 text-left">
+          <p data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".1">Clothing</p>
+          <h1 data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".5">Wujudkan Mimpimu <br> Bersama MerryRianaShop</h1>
+          <a data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".8" class="btn" href="<?= base_url("produk") ?>">Shop Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <section class="products section bg-gray">
